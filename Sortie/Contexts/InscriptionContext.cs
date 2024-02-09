@@ -5,6 +5,10 @@ namespace Infrastructure.Contexts
 {
     public class InscriptionContext : DbContext
     {
-        public DbSet<Inscription> Inscriptions { get; set; }
+        public DbSet<Inscription> Inscription { get; set; }
+
+        public InscriptionContext(DbContextOptions<InscriptionContext> options) : base(options)
+        {
+        }
     }
 }
