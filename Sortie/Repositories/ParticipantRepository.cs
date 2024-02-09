@@ -3,12 +3,12 @@ using Infrastructure.Contexts;
 
 namespace Infrastructure.Repositories
 {
-    public class ParticipantRepository : ISortieRepository
+    public class ParticipantRepository : IParticipantRepository
     {
-        public readonly SortieContext _context;
+        public readonly ParticipantContext _context;
 
         // Une injection de dépendances
-        public ParticipantRepository(SortieContext context)
+        public ParticipantRepository(ParticipantContext context)
         {
             _context = context;
         }
