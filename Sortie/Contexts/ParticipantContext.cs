@@ -10,6 +10,11 @@ namespace Infrastructure.Contexts
 {
     public class ParticipantContext : DbContext
     {
-        public DbSet<Participant> Sortie { get; set; }
+        public DbSet<Participant> Participant { get; set; }
+
+        public ParticipantContext(DbContextOptions<ParticipantContext> options) : base(options)
+        {
+        }
     }
+
 }

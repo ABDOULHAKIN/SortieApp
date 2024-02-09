@@ -10,6 +10,10 @@ namespace Infrastructure.Contexts
 {
     public class RoleContext : DbContext
     {
-        public DbSet<Role> Roles { get; set; }
+        public DbSet<Role> Role { get; set; }
+
+        public RoleContext(DbContextOptions<RoleContext> options) : base(options)
+        {
+        }
     }
 }

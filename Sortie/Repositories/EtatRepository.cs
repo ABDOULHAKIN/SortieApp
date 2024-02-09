@@ -3,25 +3,24 @@ using Infrastructure.Contexts;
 
 namespace Infrastructure.Repositories
 {
-    public class ParticipantRepository : IParticipantRepository
+    public class EtatRepository : IEtatRepository
     {
-        public readonly ParticipantContext _context;
+        public readonly EtatContext _context;
 
         // Une injection de dépendances
-        public ParticipantRepository(ParticipantContext context)
+        public EtatRepository(EtatContext context)
         {
             _context = context;
         }
 
-        public void AddParticipant(Participant participant)
+        public void AddEtat(Etat etat)
         {
             try
             {
-                _context.Participant.Add(participant);
+                _context.Etat.Add(etat);
                 _context.SaveChanges();
             }
-            catch (Exception e)
-            {
+            catch (Exception e) {
                 throw;
             }
         }
