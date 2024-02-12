@@ -13,14 +13,16 @@ namespace Infrastructure.Repositories
             _context = context;
         }
 
-        public void AddEtat(Etat etat)
+        public int AddEtat(Etat etat)
         {
             try
             {
-                _context.Etat.Add(etat);
+                var idEtat = _context.Etat.Add(etat);
                 _context.SaveChanges();
+                return idEtat.Entity.Id;
             }
             catch (Exception e) {
+                return -1;
                 throw;
             }
         }

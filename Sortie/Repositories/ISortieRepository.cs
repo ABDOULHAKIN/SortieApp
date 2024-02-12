@@ -4,6 +4,6 @@ namespace Infrastructure.Repositories
 {
     public interface ISortieRepository
     {
-        void AddSortie(Sortie sortie);
+        int AddSortie(Sortie sortie);
     }
 }

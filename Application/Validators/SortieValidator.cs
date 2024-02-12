@@ -14,7 +14,7 @@ namespace Application.Validators
             RuleFor(x => x.DateFin).NotNull();
             RuleFor(x => x.EtatId).NotNull();
             RuleFor(x => x.LieuId).NotNull();
-            RuleFor(x => x.EtatId).NotNull();
+            RuleFor(x => x.OrganisateurId).NotNull();
         }
     }
 }

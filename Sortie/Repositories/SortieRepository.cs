@@ -1,4 +1,5 @@
-﻿using Domain.Entities;
+﻿using Azure;
+using Domain.Entities;
 using Infrastructure.Contexts;
 
 namespace Infrastructure.Repositories
@@ -13,14 +14,18 @@ namespace Infrastructure.Repositories
             _context = context;
         }
 
-        public void AddSortie(Sortie sortie)
+        public int AddSortie(Sortie sortie)
         {
             try
             {
-                _context.Sortie.Add(sortie);
+                var idSortie = _context.Sortie.Add(sortie);
                 _context.SaveChanges();
+                return idSortie.Entity.Id;
+                /* _context.Sortie.Add(sortie);
+                 _context.SaveChanges();*/
             }
             catch (Exception e) {
+                return -1;
                 throw;
             }
         }
