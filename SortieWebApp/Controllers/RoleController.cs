@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Domain.Entities;
 using Application.Dto;
+using FluentValidation;
+using FluentValidation.Results;
 
 namespace SortieWebApp.Controllers
 {
@@ -9,8 +11,12 @@ namespace SortieWebApp.Controllers
     public class RoleController : ControllerBase
     {
         public IRoleService _roleService { get; set; }
-        public RoleController(IRoleService roleService) {
+
+        private IValidator<RoleDto> _validator;
+
+        public RoleController(IRoleService roleService, IValidator<RoleDto> validator) {
             _roleService = roleService;
+            _validator = validator;
         }
 
         [HttpPost]
@@ -18,9 +24,17 @@ namespace SortieWebApp.Controllers
         {
             try
             {
+                ValidationResult result = _validator.Validate(role);
+
+                if (!result.IsValid)
+                {
+                    return BadRequest(result.Errors);
+                }
+
                 _roleService.AddRole(role);
                 return Ok(role);
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }

@@ -9,10 +9,12 @@ namespace Application.Validators
     {
         public SortieValidator()
         {
-            RuleFor(x => x.RoleId).NotNull();
-            RuleFor(x => x.Mail).Matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$").NotNull().NotEmpty();
-            RuleFor(x => x.Nom).NotNull().NotEmpty();
-            RuleFor(x => x.Prenom).NotNull().NotEmpty();
+            RuleFor(x => x.Id).NotNull();
+            RuleFor(x => x.DateDebut).NotNull();
+            RuleFor(x => x.DateFin).NotNull();
+            RuleFor(x => x.EtatId).NotNull();
+            RuleFor(x => x.LieuId).NotNull();
+            RuleFor(x => x.EtatId).NotNull();
         }
     }
 }
