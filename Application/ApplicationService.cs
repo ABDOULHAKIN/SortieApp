@@ -20,7 +20,7 @@ namespace SortieApp.Application
             services.AddScoped<IRoleService, RoleService>();
             services.AddScoped<IInscriptionService, InscriptionService>();
 
-            services.AddScoped<IValidator<ParticipantDto>, ParticipantValidator>();
+            services.AddScoped<AbstractValidator<ParticipantDto>, ParticipantValidator>();
             services.AddScoped<IValidator<SortieDto>, SortieValidator>();
             services.AddScoped<IValidator<EtatDto>, EtatValidator>();
             services.AddScoped<IValidator<LieuDto>, LieuValidator>();
