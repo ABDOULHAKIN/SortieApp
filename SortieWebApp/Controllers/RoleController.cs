@@ -6,20 +6,20 @@ using Application.Dto;
 namespace SortieWebApp.Controllers
 {
     [Route("api/[controller]")]
-    public class SortieController : ControllerBase
+    public class RoleController : ControllerBase
     {
-        public ISortieService _sortieService { get; set; }
-        public SortieController(ISortieService sortieService) {
-            _sortieService = sortieService;
+        public IRoleService _roleService { get; set; }
+        public RoleController(IRoleService roleService) {
+            _roleService = roleService;
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddSortie(SortieDto sortie)
+        public async Task<IActionResult> AddRole(RoleDto role)
         {
             try
             {
-                _sortieService.AddSortie(sortie);
-                return Ok(new Sortie());
+                _roleService.AddRole(role);
+                return Ok(new Role());
             }catch (Exception ex)
             {
                 return BadRequest(ex.Message);

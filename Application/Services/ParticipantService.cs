@@ -1,4 +1,6 @@
-﻿using Domain.Entities;
+﻿using Application.Dto;
+using AutoMapper;
+using Domain.Entities;
 using Infrastructure.Repositories;
 
 
@@ -8,13 +10,17 @@ namespace Application.Services
     {
         public IParticipantRepository _rparticipantRpository { get; set; }
 
-        public ParticipantService(IParticipantRepository rParticipantRpository)
+        private IMapper _mapper {  get; set; }
+
+        public ParticipantService(IParticipantRepository rParticipantRpository, IMapper mapper)
         {
+            _mapper = mapper;
             _rparticipantRpository = rParticipantRpository;
         }
 
-        public void AddParticipant(Participant participant)
+        public void AddParticipant(ParticipantDto participantDto)
         {
+            var participant = _mapper.Map<Participant>(participantDto);
             _rparticipantRpository.AddParticipant(participant);
         }
     }

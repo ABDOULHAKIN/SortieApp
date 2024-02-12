@@ -6,20 +6,20 @@ using Application.Dto;
 namespace SortieWebApp.Controllers
 {
     [Route("api/[controller]")]
-    public class SortieController : ControllerBase
+    public class EtatController : ControllerBase
     {
-        public ISortieService _sortieService { get; set; }
-        public SortieController(ISortieService sortieService) {
-            _sortieService = sortieService;
+        public IEtatService _etatService { get; set; }
+        public EtatController(IEtatService sortieService) {
+            _etatService = sortieService;
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddSortie(SortieDto sortie)
+        public async Task<IActionResult> AddEtat(EtatDto etat)
         {
             try
             {
-                _sortieService.AddSortie(sortie);
-                return Ok(new Sortie());
+                _etatService.AddEtat(etat);
+                return Ok(new Etat());
             }catch (Exception ex)
             {
                 return BadRequest(ex.Message);

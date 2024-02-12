@@ -1,9 +1,10 @@
-﻿using Domain.Entities;
+﻿using Application.Dto;
+using Domain.Entities;
 
 namespace Application.Services
 {
     public interface ILieuService
     {
-        void AddLieu(Lieu lieu);
+        void AddLieu(LieuDto lieu);
     }
 }

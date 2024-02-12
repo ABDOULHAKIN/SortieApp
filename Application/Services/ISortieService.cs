@@ -1,9 +1,10 @@
-﻿using Domain.Entities;
+﻿using Application.Dto;
+
 
 namespace Application.Services
 {
     public interface ISortieService
     {
-        void AddSortie(Sortie sortie);
+        void AddSortie(SortieDto sortie);
     }
 }

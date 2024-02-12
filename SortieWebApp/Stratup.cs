@@ -18,7 +18,7 @@ builder.Services.AddSwaggerGen(c =>
 // builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
-//builder.Services.AddRazorPages();
+builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
@@ -43,7 +43,7 @@ app.UseRouting();
 app.UseEndpoints(endpoints => endpoints.MapControllers());
 
 app.UseAuthorization();
-/*
-app.MapRazorPages();*/
+
+app.MapRazorPages();
 
 app.Run();
