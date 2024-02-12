@@ -19,7 +19,7 @@ namespace SortieWebApp.Controllers
             try
             {
                 _roleService.AddRole(role);
-                return Ok(new Role());
+                return Ok(role);
             }catch (Exception ex)
             {
                 return BadRequest(ex.Message);

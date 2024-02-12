@@ -2,6 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Domain.Entities;
 using Application.Dto;
+using FluentValidation;
+using System;
+using FluentValidation.Results;
 
 namespace SortieWebApp.Controllers
 {
@@ -9,8 +12,11 @@ namespace SortieWebApp.Controllers
     public class ParticipantController : ControllerBase
     {
         public IParticipantService _ParticipantService { get; set; }
-        public ParticipantController(IParticipantService participantService) {
+        private IValidator<ParticipantDto> _validator;
+
+        public ParticipantController(IParticipantService participantService, IValidator<ParticipantDto> validator) {
             _ParticipantService = participantService;
+            _validator = validator;
         }
 
         [HttpPost]
@@ -18,8 +24,14 @@ namespace SortieWebApp.Controllers
         {
             try
             {
+                ValidationResult result = _validator.Validate(participant);
+
+                if (!result.IsValid) {
+                    return BadRequest(result.Errors);
+                }
+
                 _ParticipantService.AddParticipant(participant);
-                return Ok(new Participant());
+                return Ok(participant);
             }catch (Exception ex)
             {
                 return BadRequest(ex.Message);

@@ -1,8 +1,11 @@
 ﻿using Application.Dto;
 using Application.Services;
+using Application.Validators;
 using Domain.Entities;
+using FluentValidation;
 using Infrastructure.Repositories;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace SortieApp.Application
 {
@@ -16,6 +19,8 @@ namespace SortieApp.Application
             services.AddScoped<ILieuService, LieuService>();
             services.AddScoped<IRoleService, RoleService>();
             services.AddScoped<IInscriptionService, InscriptionService>();
+
+            services.AddScoped<IValidator<ParticipantDto>, ParticipantValidator>();
 
             services.AddAutoMapper(Configuration => Configuration.CreateMap<SortieDto, Sortie>());
             services.AddAutoMapper(Configuration => Configuration.CreateMap<EtatDto, Etat>());

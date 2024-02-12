@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Domain.Entities;
 using Application.Dto;
+using FluentValidation;
+using FluentValidation.Results;
 
 namespace SortieWebApp.Controllers
 {
@@ -9,8 +11,11 @@ namespace SortieWebApp.Controllers
     public class EtatController : ControllerBase
     {
         public IEtatService _etatService { get; set; }
-        public EtatController(IEtatService sortieService) {
+        private IValidator<EtatDto> _validator;
+
+        public EtatController(IEtatService sortieService, IValidator<EtatDto> validator) {
             _etatService = sortieService;
+            _validator = validator;
         }
 
         [HttpPost]
@@ -18,9 +23,17 @@ namespace SortieWebApp.Controllers
         {
             try
             {
+                ValidationResult result = _validator.Validate(etat);
+
+                if (!result.IsValid)
+                {
+                    return BadRequest(result.Errors);
+                }
+
                 _etatService.AddEtat(etat);
-                return Ok(new Etat());
-            }catch (Exception ex)
+                return Ok(etat);
+            }
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }

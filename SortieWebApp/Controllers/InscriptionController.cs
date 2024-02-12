@@ -19,7 +19,7 @@ namespace SortieWebApp.Controllers
             try
             {
                 _inscriptionService.AddInscription(inscription);
-                return Ok(new Inscription());
+                return Ok(inscription);
             }catch (Exception ex)
             {
                 return BadRequest(ex.Message);

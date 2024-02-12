@@ -19,7 +19,7 @@ namespace SortieWebApp.Controllers
             try
             {
                 _sortieService.AddSortie(sortie);
-                return Ok(new Sortie());
+                return Ok(sortie);
             }catch (Exception ex)
             {
                 return BadRequest(ex.Message);

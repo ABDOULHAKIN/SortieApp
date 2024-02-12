@@ -27,7 +27,8 @@ namespace Application.Services
                 var etat = _mapper.Map<Etat>(etatDto);
                 _retatRpository.AddEtat(etat);
             }
-            catch (Exception e) {
+            catch (Exception e) 
+            {
                 throw;
             }
         }

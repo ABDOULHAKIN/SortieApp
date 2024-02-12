@@ -19,7 +19,7 @@ namespace SortieWebApp.Controllers
             try
             {
                 _lieuService.AddLieu(lieu);
-                return Ok(new Lieu());
+                return Ok(lieu);
             }catch (Exception ex)
             {
                 return BadRequest(ex.Message);
