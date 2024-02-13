@@ -39,8 +39,8 @@ namespace Application.Services
         {
             var etat =  _retatRpository.GetById(id);
             if (etat != null) {
-                var dto = _mapper.Map<EtatDto>(etat);
-                return dto;
+                var dtoPourAvoirIdEtat = _mapper.Map<EtatDto>(etat);
+                return dtoPourAvoirIdEtat;
             }
             return null;
         }
