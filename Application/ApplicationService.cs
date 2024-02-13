@@ -35,6 +35,11 @@ namespace SortieApp.Application
             services.AddAutoMapper(Configuration => Configuration.CreateMap<RoleDto, Role>());
             services.AddAutoMapper(Configuration => Configuration.CreateMap<InscriptionDto, Inscription>());
 
+            // Le mapping de Get
+
+            services.AddAutoMapper(Configuration => Configuration.CreateMap<Etat, EtatDto>());
+
+
             return services;
         }
 

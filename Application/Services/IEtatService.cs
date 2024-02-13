@@ -5,6 +5,7 @@ namespace Application.Services
 {
     public interface IEtatService
     {
-        void AddEtat(EtatDto etat);
+        int AddEtat(EtatDto etat);
+        EtatDto GetEtat(int etatId);
     }
 }

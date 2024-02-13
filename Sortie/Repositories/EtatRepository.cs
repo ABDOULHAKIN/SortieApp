@@ -26,5 +26,20 @@ namespace Infrastructure.Repositories
                 throw;
             }
         }
+
+        public Etat? GetById(int id)
+        {
+            try
+            {
+                var idEtat = _context.Etat.Find(id);
+         
+                return idEtat;
+            }
+            catch (Exception e)
+            {
+                //return -1;
+                throw;
+            }
+        }
     }
 }

@@ -30,7 +30,22 @@ namespace SortieWebApp.Controllers
                     return BadRequest(result.Errors);
                 }
 
-                _etatService.AddEtat(etat);
+                var etatId = _etatService.AddEtat(etat);
+                return Ok(etatId);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> GetEtat(int etatId)
+        {
+            try
+            {
+                var etat = _etatService.GetEtat(etatId);
                 return Ok(etat);
             }
             catch (Exception ex)
