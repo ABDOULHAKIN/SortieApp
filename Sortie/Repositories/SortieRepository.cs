@@ -1,6 +1,8 @@
 ﻿using Azure;
 using Domain.Entities;
 using Infrastructure.Contexts;
+using Microsoft.EntityFrameworkCore;
+using System.Globalization;
 
 namespace Infrastructure.Repositories
 {
@@ -52,6 +54,22 @@ namespace Infrastructure.Repositories
             {
                 var updateSortie = _context.Sortie.Update(sortie);
                 _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
+
+        // Supprimer une sortie
+
+        public void DeleteSortie(Sortie sortie)
+        {
+            try
+            {
+                _context.Sortie.Remove(sortie);
+                _context.SaveChanges();
+
             }
             catch (Exception e)
             {

@@ -67,5 +67,21 @@ namespace SortieWebApp.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        // Supprimer une sortie
+
+        [HttpDelete]
+        public async Task<IActionResult> DeleteSortie(int sortieId)
+        {
+            try
+            {
+                var sortie = _sortieService.DeleteSortie(sortieId);
+                return Ok(sortie);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

@@ -79,5 +79,24 @@ namespace Application.Services
             }
             return null;
 */        }
+
+        // Supprimer une sortie
+
+        public void DeleteSortie(int id)
+        {
+            var sortie = _rsortieRpository.GetSortie(id);
+            if (sortie != null)
+            {
+                try
+                {
+                    _rsortieRpository.DeleteSortie(id);
+                }
+                catch (Exception e)
+                {
+                    throw;
+                }
+            }
+            //return null;
+        }
     }
 }

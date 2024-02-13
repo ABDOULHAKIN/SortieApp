@@ -8,5 +8,6 @@ namespace Application.Services
         int AddSortie(SortieDto sortie);
         SortieDto GetSortie(int id);
         void Update(updateSortieDto updatedSortie);
+        int DeleteSortie(int id);
     }
 }
