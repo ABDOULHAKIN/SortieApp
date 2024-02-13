@@ -52,11 +52,9 @@ namespace Infrastructure.Repositories
             {
                 var updateSortie = _context.Sortie.Update(sortie);
                 _context.SaveChanges();
-                //return updateSortie.Entity.Id;
             }
             catch (Exception e)
             {
-                //return -1;
                 throw;
             }
         }

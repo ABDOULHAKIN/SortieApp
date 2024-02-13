@@ -55,6 +55,11 @@ namespace Application.Services
             var sortie = _rsortieRpository.GetSortie(updatedSortie.Id);
             if (sortie != null) {
                 sortie.LieuId = updatedSortie.LieuId;
+                sortie.Nom = updatedSortie.Nom;
+                sortie.OrganisateurId = updatedSortie.OrganisateurId;
+                sortie.DateDebut = updatedSortie.DateDebut;
+                sortie.DateFin = updatedSortie.DateFin;
+                sortie.EtatId = updatedSortie.EtatId;
 
                 _rsortieRpository.UpdateSortie(sortie);
             }
