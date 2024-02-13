@@ -4,21 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Entities
+namespace Application.Dto
 {
-    public class Participant
+    public class ParticipantSortie
     {
-        public int Id { get; set; }
+        public int Id { get; init; }
         public string Nom { get; set; }
         public string Prenom { get; set; }
         public string Mail { get; set; }
 
         public int RoleId { get; set; }
+        public bool IsActive { get; set; } = true;
 
-        public virtual Role Role { get; set; }
 
-
-        
 
     }
 }

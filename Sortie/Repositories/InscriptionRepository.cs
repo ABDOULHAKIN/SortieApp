@@ -24,5 +24,11 @@ namespace Infrastructure.Repositories
                 throw;
             }
         }
+
+        public Inscription GetInscriptionById(int id)
+        {
+            Inscription result = _context.Inscription.FirstOrDefault(x => x.Id == id);
+            return result;
+        }
     }
 }

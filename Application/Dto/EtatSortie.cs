@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Entities
+namespace Application.Dto
 {
-    public class Role
+    public class EtatSortie
     {
-        [Column("id_role")]
-        public int Id { get; set; }
+        public int Id_etat { get; init;}
         public string Libelle { get; set; }
+
+        public bool IsActive { get; set; }
     }
 }

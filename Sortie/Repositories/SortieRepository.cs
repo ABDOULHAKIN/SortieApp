@@ -24,5 +24,22 @@ namespace Infrastructure.Repositories
                 throw;
             }
         }
+
+        public Sortie GetSortieByID(int id)
+        {
+            Sortie result = _context.Sortie.FirstOrDefault(x => x.Id == id);
+            return result;
+        }
+
+
+
+        public void PseudoDeleteByID(int id)
+        {
+            var toDelete = _context.Sortie.FirstOrDefault(e => e.Id == id);
+            toDelete.IsActive = false;
+            _context.SaveChanges();
+
+
+        }
     }
 }

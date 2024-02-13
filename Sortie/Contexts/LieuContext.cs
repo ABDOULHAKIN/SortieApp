@@ -15,5 +15,12 @@ namespace Infrastructure.Contexts
         public LieuContext(DbContextOptions<LieuContext> options) : base(options)
         {
         }
+
+
+        protected override void OnModelCreating(ModelBuilder modelbuilder)
+        {
+            modelbuilder.Entity<Lieu>()
+                .Property(x => x.Id).HasColumnName("id_lieu");
+        }
     }
 }

@@ -24,5 +24,11 @@ namespace Infrastructure.Repositories
                 throw;
             }
         }
+
+        public Role GetRoleById(int id)
+        {
+            Role result = _context.Role.FirstOrDefault(role => role.Id == id);
+            return result;
+        }
     }
 }

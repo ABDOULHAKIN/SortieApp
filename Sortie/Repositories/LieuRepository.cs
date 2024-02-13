@@ -24,5 +24,13 @@ namespace Infrastructure.Repositories
                 throw;
             }
         }
+
+        public Lieu GetLieuById(int id)
+        {
+
+            Lieu result = _context.Lieu.FirstOrDefault(l => l.Id == id);
+
+            return result;
+        }
     }
 }

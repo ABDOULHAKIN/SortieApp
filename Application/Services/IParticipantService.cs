@@ -1,4 +1,4 @@
-﻿using Domain.Entities;
+﻿using Application.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +9,7 @@ namespace Application.Services
 {
     public interface IParticipantService
     {
-        void AddParticipant(Participant participant);
+        void AddParticipant(ParticipantDto participant);
+        ParticipantSortie GetParticipant(int id);
     }
 }

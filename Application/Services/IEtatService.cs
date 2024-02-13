@@ -1,9 +1,11 @@
-﻿using Domain.Entities;
+﻿using Application.Dto;
 
 namespace Application.Services
 {
     public interface IEtatService
     {
-        void AddEtat(Etat etat);
+        int AddEtat(EtatDto etat);
+        EtatSortie GetEtat(int id);
+        void DeleteEtat(int id);
     }
 }

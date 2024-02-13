@@ -25,5 +25,11 @@ namespace Infrastructure.Repositories
                 throw;
             }
         }
+
+        public Participant GetParticipantById(int id)
+        {
+            Participant result = _context.Participant.FirstOrDefault(x => x.Id == id);
+            return result;
+        }
     }
 }
