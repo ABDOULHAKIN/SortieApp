@@ -4,6 +4,7 @@ namespace Infrastructure.Repositories
 {
     public interface IInscriptionRepository
     {
-        void AddInscription(Inscription inscription);
+        int AddInscription(Inscription inscription);
+        Inscription? GetById(int id);
     }
 }

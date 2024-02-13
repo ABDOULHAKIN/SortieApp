@@ -37,5 +37,19 @@ namespace SortieWebApp.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetParticipant(int participantId)
+        {
+            try
+            {
+                var participant = _ParticipantService.GetParticipant(participantId);
+                return Ok(participant);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

@@ -5,6 +5,8 @@ namespace Application.Services
 {
     public interface ISortieService
     {
-        void AddSortie(SortieDto sortie);
+        int AddSortie(SortieDto sortie);
+        SortieDto GetSortie(int id);
+        void Update(updateSortieDto updatedSortie);
     }
 }

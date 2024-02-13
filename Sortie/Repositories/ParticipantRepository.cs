@@ -13,15 +13,31 @@ namespace Infrastructure.Repositories
             _context = context;
         }
 
-        public void AddParticipant(Participant participant)
+        public int AddParticipant(Participant participant)
         {
             try
             {
-                _context.Participant.Add(participant);
+                var idParticipant = _context.Participant.Add(participant); ;
                 _context.SaveChanges();
+                return idParticipant.Entity.Id;
             }
             catch (Exception e)
             {
+                throw;
+            }
+        }
+
+        public Participant? GetParticipant(int id)
+        {
+            try
+            {
+                var idParticipant = _context.Participant.Find(id);
+
+                return idParticipant;
+            }
+            catch (Exception e)
+            {
+                //return -1;
                 throw;
             }
         }

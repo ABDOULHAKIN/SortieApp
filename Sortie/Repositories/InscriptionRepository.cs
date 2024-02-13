@@ -13,14 +13,31 @@ namespace Infrastructure.Repositories
             _context = context;
         }
 
-        public void AddInscription(Inscription inscription)
+        public int AddInscription(Inscription inscription)
         {
             try
             {
-                _context.Inscription.Add(inscription);
+                var idInscription = _context.Inscription.Add(inscription);
                 _context.SaveChanges();
+                return idInscription.Entity.Id;
             }
-            catch (Exception e) {
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
+
+        public Inscription? GetById(int id)
+        {
+            try
+            {
+                var idInscription = _context.Inscription.Find(id);
+
+                return idInscription;
+            }
+            catch (Exception e)
+            {
+                //return -1;
                 throw;
             }
         }

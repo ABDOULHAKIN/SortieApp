@@ -1,4 +1,5 @@
-﻿using Domain.Entities;
+﻿using Azure;
+using Domain.Entities;
 using Infrastructure.Contexts;
 
 namespace Infrastructure.Repositories
@@ -13,14 +14,30 @@ namespace Infrastructure.Repositories
             _context = context;
         }
 
-        public void AddLieu(Lieu lieu)
+        public int AddLieu(Lieu lieu)
         {
             try
             {
-                _context.Lieu.Add(lieu);
+                var idEtat = _context.Lieu.Add(lieu); ;
                 _context.SaveChanges();
+                return idEtat.Entity.Id;
             }
             catch (Exception e) {
+                throw;
+            }
+        }
+
+        public Lieu? GetLieu(int id)
+        {
+            try
+            {
+                var idInscription = _context.Lieu.Find(id);
+
+                return idInscription;
+            }
+            catch (Exception e)
+            {
+                //return -1;
                 throw;
             }
         }

@@ -39,5 +39,19 @@ namespace SortieWebApp.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetLieu(int lieuId)
+        {
+            try
+            {
+                var lieu = _lieuService.GetLieu(lieuId);
+                return Ok(lieu);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

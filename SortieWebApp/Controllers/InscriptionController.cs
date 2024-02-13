@@ -41,5 +41,19 @@ namespace SortieWebApp.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetInscription(int inscriptionId)
+        {
+            try
+            {
+                var inscription = _inscriptionService.GetInscription(inscriptionId);
+                return Ok(inscription);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

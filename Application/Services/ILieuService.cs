@@ -5,6 +5,7 @@ namespace Application.Services
 {
     public interface ILieuService
     {
-        void AddLieu(LieuDto lieu);
+        int AddLieu(LieuDto lieu);
+        LieuDto? GetLieu(int lieuId);
     }
 }

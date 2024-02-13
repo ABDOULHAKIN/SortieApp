@@ -5,9 +5,9 @@ using System.Linq;
 
 namespace Application.Dto
 {
-    public class SortieDto
+    public class updateSortieDto
     {
-        //public int Id { get; set; }
+        public int Id { get; set; }
         public string Nom { get; set; }
         public DateTime DateDebut { get; set; }
         public DateTime DateFin { get; set; }

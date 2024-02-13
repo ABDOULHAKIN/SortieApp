@@ -18,10 +18,31 @@ namespace Application.Services
             _rparticipantRpository = rParticipantRpository;
         }
 
-        public void AddParticipant(ParticipantDto participantDto)
+
+        public int AddParticipant(ParticipantDto participantDto)
         {
-            var participant = _mapper.Map<Participant>(participantDto);
-            _rparticipantRpository.AddParticipant(participant);
+            try
+            {
+                // On fait le mappping 
+                var participant = _mapper.Map<Participant>(participantDto);
+                return _rparticipantRpository.AddParticipant(participant);
+            }
+            catch (Exception e)
+            {
+                return -1;
+                throw;
+            }
+        }
+
+        public ParticipantDto GetParticipant(int id)
+        {
+            var participant = _rparticipantRpository.GetParticipant(id);
+            if (participant != null)
+            {
+                var dtoPourAvoirIdParticpant = _mapper.Map<ParticipantDto>(participant);
+                return dtoPourAvoirIdParticpant;
+            }
+            return null;
         }
     }
 }

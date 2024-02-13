@@ -4,6 +4,7 @@ namespace Infrastructure.Repositories
 {
     public interface IParticipantRepository
     {
-        void AddParticipant(Participant participant);
+        int AddParticipant(Participant participant);
+        Participant? GetParticipant(int id);
     }
 }

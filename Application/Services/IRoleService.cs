@@ -5,6 +5,7 @@ namespace Application.Services
 {
     public interface IRoleService
     {
-        void AddRole(RoleDto role);
+        int AddRole(RoleDto role);
+        RoleDto? GetRole(int id);
     }
 }

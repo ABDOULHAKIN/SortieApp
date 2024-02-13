@@ -39,5 +39,33 @@ namespace SortieWebApp.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetSortie(int sortieId)
+        {
+            try
+            {
+                var sortie = _sortieService.GetSortie(sortieId);
+                return Ok(sortie);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateSortieDto(updateSortieDto sortie)
+        {
+            try
+            {
+                _sortieService.Update(sortie);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

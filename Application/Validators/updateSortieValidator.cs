@@ -5,10 +5,11 @@ using System;
 
 namespace Application.Validators
 {
-    public class SortieValidator : AbstractValidator<SortieDto>
+    public class updateSortieValidator : AbstractValidator<updateSortieDto>
     {
-        public SortieValidator()
+        public updateSortieValidator()
         {
+            RuleFor(x => x.Id).NotNull();
             RuleFor(x => x.DateDebut).NotNull();
             RuleFor(x => x.DateFin).NotNull();
             RuleFor(x => x.EtatId).NotNull();

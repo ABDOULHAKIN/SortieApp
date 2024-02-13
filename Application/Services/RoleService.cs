@@ -2,6 +2,7 @@
 using AutoMapper;
 using Domain.Entities;
 using Infrastructure.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Services
 {
@@ -17,12 +18,33 @@ namespace Application.Services
             _rroleRpository = rroleRpository;
         }
 
-        public void AddRole(RoleDto roleDto)
+        public int AddRole(RoleDto roleDto)
         {
-            var role = _mapper.Map<Role>(roleDto);
-            _rroleRpository.AddRole(role);
+
+            try
+            {
+                // On fait le mappping 
+                var role = _mapper.Map<Role>(roleDto);
+                return _rroleRpository.AddRole(role);
+            }
+            catch (Exception e)
+            {
+                return -1;
+                throw;
+            }
         }
 
-       
+        public RoleDto? GetRole(int id)
+        {
+            var role = _rroleRpository.GetRole(id);
+            if (role != null)
+            {
+                var dtoPourAvoirIdRole = _mapper.Map<RoleDto>(role);
+                return dtoPourAvoirIdRole;
+            }
+            return null;
+        }
+
+
     }
 }

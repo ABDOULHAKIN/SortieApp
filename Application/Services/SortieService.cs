@@ -16,10 +16,63 @@ namespace Application.Services
              _rsortieRpository = rsortieRpository;
         }
 
-        public void AddSortie(SortieDto sortieDto)
+        public int AddSortie(SortieDto sortieDto)
         {
-            var sortie = _mapper.Map<Sortie>(sortieDto);
-            _rsortieRpository.AddSortie(sortie);
+            try
+            {
+                // On fait le mappping 
+                var sortie = _mapper.Map<Sortie>(sortieDto);
+                return _rsortieRpository.AddSortie(sortie);
+            }
+            catch (Exception e)
+            {
+                return -1;
+                throw;
+            }
         }
+
+        public SortieDto? GetSortie(int id)
+        {
+            var sortie = _rsortieRpository.GetSortie(id);
+            if (sortie != null)
+            {
+              /*var dtoPourAvoirSortieDto = _mapper.Map<SortieDto>(sortie);
+                return dtoPourAvoirSortieDto;*/
+                try
+                {
+                    return _mapper.Map<SortieDto>(sortie);
+                }
+                catch (Exception e)
+                {
+                    throw;
+                }
+            }
+            return null;
+        }
+
+        public void Update(updateSortieDto updatedSortie)
+        {
+            var sortie = _rsortieRpository.GetSortie(updatedSortie.Id);
+            if (sortie != null) {
+                sortie.LieuId = updatedSortie.LieuId;
+
+                _rsortieRpository.UpdateSortie(sortie);
+            }
+            
+            /*if (sortie != null)
+            {
+                *//*var dtoPourAvoirSortieDto = _mapper.Map<SortieDto>(sortie);
+                  return dtoPourAvoirSortieDto;*//*
+                try
+                {
+                    return _mapper.Map<SortieDto>(sortie);
+                }
+                catch (Exception e)
+                {
+                    throw;
+                }
+            }
+            return null;
+*/        }
     }
 }

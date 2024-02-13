@@ -1,4 +1,5 @@
-﻿using Domain.Entities;
+﻿using Azure;
+using Domain.Entities;
 using Infrastructure.Contexts;
 
 namespace Infrastructure.Repositories
@@ -13,14 +14,30 @@ namespace Infrastructure.Repositories
             _context = context;
         }
 
-        public void AddRole(Role role)
+        public int AddRole(Role role)
         {
             try
             {
-                _context.Role.Add(role);
+                var idRole = _context.Role.Add(role);
                 _context.SaveChanges();
+                return idRole.Entity.Id;
             }
             catch (Exception e) {
+                throw;
+            }
+        }
+
+        public Role? GetRole(int id)
+        {
+            try
+            {
+                var idRole = _context.Role.Find(id);
+
+                return idRole;
+            }
+            catch (Exception e)
+            {
+                //return -1;
                 throw;
             }
         }

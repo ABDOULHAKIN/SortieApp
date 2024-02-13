@@ -16,10 +16,31 @@ namespace Application.Services
             _rlieuRpository = rlieuRpository;
         }
 
-        public void AddLieu(LieuDto lieuDto)
+        public int AddLieu(LieuDto lieuDto)
         {
-            var lieu = _mapper.Map<Lieu>(lieuDto);
-            _rlieuRpository.AddLieu(lieu);
+
+            try
+            {
+                // On fait le mappping 
+                var lieu = _mapper.Map<Lieu>(lieuDto);
+                return _rlieuRpository.AddLieu(lieu);
+            }
+            catch (Exception e)
+            {
+                return -1;
+                throw;
+            }
+        }
+
+        public LieuDto? GetLieu(int id)
+        {
+            var lieu = _rlieuRpository.GetLieu(id);
+            if (lieu != null)
+            {
+                var dtoPourAvoiriDLieu = _mapper.Map<LieuDto>(lieu);
+                return dtoPourAvoiriDLieu;
+            }
+            return null;
         }
     }
 }

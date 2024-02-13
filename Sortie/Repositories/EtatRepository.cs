@@ -31,7 +31,7 @@ namespace Infrastructure.Repositories
         {
             try
             {
-                var idEtat = _context.Etat.Find(id);
+                var idEtat = _context.Etat.FirstOrDefault(etat => etat.Id == id); // Remplace le Find AVEC 
          
                 return idEtat;
             }

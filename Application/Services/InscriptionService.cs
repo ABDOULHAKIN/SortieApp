@@ -1,5 +1,6 @@
 ﻿using Application.Dto;
 using AutoMapper;
+using Azure;
 using Domain.Entities;
 using Infrastructure.Repositories;
 
@@ -17,10 +18,22 @@ namespace Application.Services
             _rinscriptionRpository = rInscriptionRpository;
         }
 
-        public void AddInscription(InscriptionDto inscriptionDto)
+        public int AddInscription(InscriptionDto inscriptionDto)
         {
             var inscription = _mapper.Map<Inscription>(inscriptionDto);
-            _rinscriptionRpository.AddInscription(inscription);
-        } 
+          
+            return _rinscriptionRpository.AddInscription(inscription);
+        }
+
+        public InscriptionDto GetInscription(int id)
+        {
+            var inscription = _rinscriptionRpository.GetById(id);
+            if (inscription != null)
+            {
+                var dtoPourAvoirIdiInscription = _mapper.Map<InscriptionDto>(inscription);
+                return dtoPourAvoirIdiInscription;
+            }
+            return null;
+        }
     }
 }

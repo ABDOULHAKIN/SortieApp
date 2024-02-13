@@ -4,7 +4,8 @@ namespace Infrastructure.Repositories
 {
     public interface IRoleRepository
     {
-        void AddRole(Role role);
-    
+        int AddRole(Role role);
+        Role? GetRole(int id);
+
     }
 }

@@ -5,6 +5,7 @@ namespace Application.Services
 {
     public interface IInscriptionService
     {
-        void AddInscription(InscriptionDto inscription);
-    }
+        int AddInscription(InscriptionDto inscription);
+        InscriptionDto GetInscription(int inscriptionId);
+    }      
 }

@@ -20,7 +20,7 @@ namespace SortieApp.Application
             services.AddScoped<IRoleService, RoleService>();
             services.AddScoped<IInscriptionService, InscriptionService>();
 
-            services.AddScoped<AbstractValidator<ParticipantDto>, ParticipantValidator>();
+            services.AddScoped<IValidator<ParticipantDto>, ParticipantValidator>();
             services.AddScoped<IValidator<SortieDto>, SortieValidator>();
             services.AddScoped<IValidator<EtatDto>, EtatValidator>();
             services.AddScoped<IValidator<LieuDto>, LieuValidator>();
@@ -38,6 +38,12 @@ namespace SortieApp.Application
             // Le mapping de Get
 
             services.AddAutoMapper(Configuration => Configuration.CreateMap<Etat, EtatDto>());
+            services.AddAutoMapper(Configuration => Configuration.CreateMap<Inscription, InscriptionDto>());
+            services.AddAutoMapper(Configuration => Configuration.CreateMap<Participant, ParticipantDto>());
+            services.AddAutoMapper(Configuration => Configuration.CreateMap<Lieu, LieuDto>());
+            services.AddAutoMapper(Configuration => Configuration.CreateMap<Role, RoleDto>());
+            services.AddAutoMapper(Configuration => Configuration.CreateMap<Sortie, SortieDto>());
+
 
 
             return services;

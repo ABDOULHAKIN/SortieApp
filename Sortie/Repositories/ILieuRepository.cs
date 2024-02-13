@@ -4,6 +4,7 @@ namespace Infrastructure.Repositories
 {
     public interface ILieuRepository
     {
-        void AddLieu(Lieu lieu);
+        int AddLieu(Lieu lieu);
+        Lieu? GetLieu(int id);
     }
 }
