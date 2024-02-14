@@ -36,7 +36,7 @@ namespace Infrastructure.Contexts
             modelbuilder.Entity<Sortie>()
                .Property(e => e.IsActive).HasColumnName("is_active");
 
-
+            
 
 
         }

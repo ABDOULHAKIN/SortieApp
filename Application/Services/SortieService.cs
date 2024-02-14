@@ -32,9 +32,46 @@ namespace Application.Services
 
         public SortieSortie GetSortie(int id)
         {
-            Sortie sortieDao = _rsortieRpository.GetSortieByID(id);
-            SortieSortie result = _mapper.Map<Sortie, SortieSortie>(sortieDao);
-            return result;
+            Sortie sortieDao = _rsortieRpository.GetSortieByID(id).Result;
+            SortieSortie result;
+            if (sortieDao != null)
+            {
+                result = _mapper.Map<Sortie, SortieSortie>(sortieDao);
+                return result;
+            }
+
+            return null;
+        }
+
+
+        public void DeleteSortie(int id)
+        {
+            _rsortieRpository.PseudoDeleteByID(id);
+        }
+
+
+
+
+        public async Task UpdateSortieService(int id, SortieDto sortie)
+        {
+            var previousOne = _rsortieRpository.GetSortieByID(id).Result;
+
+             if (previousOne != null)
+            {
+                // Sortie mappedOne = new Sortie();
+                //mappedOne.Id = previousOne.Id;
+                previousOne.LieuId = sortie.LieuId;
+                previousOne.OrganisateurId = sortie.OrganisateurId;
+                previousOne.DateDebut = sortie.DateDebut;
+                previousOne.DateDebut = sortie.DateFin;
+                previousOne.Nom = sortie.Nom;
+
+
+
+                await _rsortieRpository.UpdateSortie(previousOne);
+                
+            }
+            
         }
     }
 }

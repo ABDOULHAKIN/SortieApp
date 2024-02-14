@@ -1,5 +1,6 @@
 ﻿using Domain.Entities;
 using Infrastructure.Contexts;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories
 {
@@ -20,15 +21,23 @@ namespace Infrastructure.Repositories
                 _context.Sortie.Add(sortie);
                 _context.SaveChanges();
             }
-            catch (Exception e) {
+            catch (Exception e)
+            {
                 throw;
             }
         }
 
-        public Sortie GetSortieByID(int id)
+
+        public async Task<Sortie?> GetSortieByID(int id)
         {
-            Sortie result = _context.Sortie.FirstOrDefault(x => x.Id == id);
-            return result;
+            try
+            {
+                return await _context.Sortie.Where(x => x.Id == id && x.IsActive).FirstOrDefaultAsync();
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
         }
 
 
@@ -41,5 +50,21 @@ namespace Infrastructure.Repositories
 
 
         }
+
+
+        public async Task<int> UpdateSortie(Sortie sortie)
+        {
+            try
+            {
+                _context.Sortie.Update(sortie);
+                await _context.SaveChangesAsync();
+                return sortie.Id;
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
+
     }
 }

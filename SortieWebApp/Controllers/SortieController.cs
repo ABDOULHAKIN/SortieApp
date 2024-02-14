@@ -26,7 +26,7 @@ namespace SortieWebApp.Controllers
             {
                 int idInsert = _sortieService.AddSortie(sortieDto);
                 return Ok(_sortieService.GetSortie(idInsert));
-            }catch (Exception ex)
+            } catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
@@ -38,7 +38,32 @@ namespace SortieWebApp.Controllers
         public async Task<IActionResult> GetSortie(int id)
         {
             SortieSortie result = _sortieService.GetSortie(id);
-            return Ok(result);
+            if (result != null)
+            {
+                return Ok(result);
+            }
+            return BadRequest("Not found hehe");
+        }
+
+
+        [HttpDelete]
+        public async Task<IActionResult> DeleteSortie(int id)
+        {
+
+
+
+            _sortieService.DeleteSortie(id);
+            return Ok($"Sortie id {id} désactivée");
+        }
+
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateSortie([FromRoute]int id, [FromBody]SortieDto sortie)
+        {
+            _sortieService.UpdateSortieService(id, sortie);
+            
+            
+            return Ok();
         }
     }
 }

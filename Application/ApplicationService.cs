@@ -32,7 +32,8 @@ namespace SortieApp.Application
                 .AddAutoMapper(configurations => configurations.CreateMap<Inscription, InscriptionSortie>())
                 .AddAutoMapper(configurations => configurations.CreateMap<Participant, ParticipantSortie>())
                 .AddAutoMapper(configurations => configurations.CreateMap<Role, RoleSortie>())
-                .AddAutoMapper(configurations => configurations.CreateMap<Sortie, SortieSortie>());
+                .AddAutoMapper(configurations => configurations.CreateMap<Sortie, SortieSortie>())
+                .AddAutoMapper(configurations => configurations.CreateMap<SortieSortie, Sortie>());
 
 
             services.AddScoped<IValidator<EtatDto>, EtatValidator>();

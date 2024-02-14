@@ -5,6 +5,10 @@ namespace Infrastructure.Repositories
     public interface ISortieRepository
     {
         void AddSortie(Sortie sortie);
-        Sortie GetSortieByID(int id);
+        Task<Sortie?> GetSortieByID(int id);
+
+        void PseudoDeleteByID(int id);
+
+        Task<int> UpdateSortie(Sortie sortie);
     }
 }
