@@ -60,7 +60,7 @@ namespace SortieWebApp.Controllers
             try
             {
                 _sortieService.Update(sortie);
-                return Ok();
+                return Ok("Sortie modifié avec succés");
             }
             catch (Exception ex)
             {
@@ -76,7 +76,7 @@ namespace SortieWebApp.Controllers
             try
             {
                 _sortieService.DeleteSortie(sortieId);
-                return Ok("Sortie supprimer avec succés");
+                return Ok("Sortie désactiver avec succés");
             }
             catch (Exception ex)
             {

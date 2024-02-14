@@ -11,6 +11,7 @@ namespace Domain.Entities
         public int OrganisateurId {  get; set; }
         public int LieuId {  get; set; }
         public int EtatId {  get; set; }
+        public bool isActive { get; set; } = true;
 
 
         public virtual Participant Organisateur { get; set; }

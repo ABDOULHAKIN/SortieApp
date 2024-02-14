@@ -37,7 +37,7 @@ namespace Infrastructure.Repositories
         {
             try
             {
-                return _context.Sortie.Find(id);
+                return _context.Sortie.FirstOrDefault(s => s.isActive && s.Id == id);
 
             }
             catch (Exception e)
@@ -66,7 +66,9 @@ namespace Infrastructure.Repositories
         {
             try
             {
-                _context.Sortie.Remove(sortie);
+                sortie.isActive = false;
+                _context.Sortie.Update(sortie);
+                //  _context.Sortie.Remove(sortie);
                 _context.SaveChanges();
 
             }
