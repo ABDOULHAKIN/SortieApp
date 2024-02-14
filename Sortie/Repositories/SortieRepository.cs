@@ -62,7 +62,6 @@ namespace Infrastructure.Repositories
         }
 
         // Supprimer une sortie
-
         public void DeleteSortie(Sortie sortie)
         {
             try

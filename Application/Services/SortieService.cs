@@ -89,7 +89,7 @@ namespace Application.Services
             {
                 try
                 {
-                    _rsortieRpository.DeleteSortie(id);
+                    _rsortieRpository.DeleteSortie(sortie);
                 }
                 catch (Exception e)
                 {

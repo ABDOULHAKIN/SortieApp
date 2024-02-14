@@ -75,8 +75,8 @@ namespace SortieWebApp.Controllers
         {
             try
             {
-                var sortie = _sortieService.DeleteSortie(sortieId);
-                return Ok(sortie);
+                _sortieService.DeleteSortie(sortieId);
+                return Ok("Sortie supprimer avec succés");
             }
             catch (Exception ex)
             {
